@@ -1,0 +1,2 @@
+1|ali|admin|True|True
+2|admin|smart|False|False
