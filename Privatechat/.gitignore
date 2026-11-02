@@ -1,0 +1,23 @@
+# Visual Studio
+.vs/
+**/.vs/
+
+# Build output (at any project depth)
+[Bb]in/
+[Oo]bj/
+**/[Bb]in/
+**/[Oo]bj/
+
+# User-specific Visual Studio files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet
+*.nupkg
+**/packages/
+
+# Temporary files
+*.cache
+*.tmp
