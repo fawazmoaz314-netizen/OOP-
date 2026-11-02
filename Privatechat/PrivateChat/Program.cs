@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PrivateChat;
 
-// The program starts here. It only creates the UI object and starts its menu.
+
 class Program
 {
 static void Main(string[] args)

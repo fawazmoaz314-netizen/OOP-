@@ -4,7 +4,7 @@ using PrivateChat.Repositories;
 
 namespace PrivateChat.Services;
 
-// Business Logic Layer: the rules for chatting (send, open, list, hide).
+
 public class ChatService
 {
     private readonly UserRepository _userRepository;
@@ -16,7 +16,7 @@ public class ChatService
         _conversationRepository = new ConversationRepository();
     }
 
-    // Sends a message. Returns "" when fine, otherwise the reason it failed.
+  
     public string SendMessage(string senderName, string receiverName, string text)
     {
         senderName = User.cleanName(senderName);
@@ -54,7 +54,7 @@ public class ChatService
         Conversation conversation = FindConversation(conversations, senderName, receiverName);
         if (conversation == null)
         {
-            // First message between these two: create the conversation.
+            
             conversation = new Conversation(NextConversationId(conversations), sender, receiver);
             conversations.Add(conversation);
         }
@@ -64,8 +64,7 @@ public class ChatService
         return "";
     }
 
-    // Opens the chat with another person and marks the messages they sent as read.
-    // Returns null when there is no conversation yet.
+    
     public Conversation OpenConversation(string myName, string otherName)
     {
         myName = User.cleanName(myName);
@@ -88,7 +87,7 @@ public class ChatService
         return conversation;
     }
 
-    // My chats, newest first. hidden = false gives the normal list, hidden = true gives my invisible chats.
+    
     public List<Conversation> GetMyConversations(string myName, bool hidden)
     {
         myName = User.cleanName(myName);
@@ -114,8 +113,7 @@ public class ChatService
         return result;
     }
 
-    // Hides (hidden = true) or shows (hidden = false) my chat with one person.
-    // Returns "" when fine, otherwise the reason it failed.
+  
     public string SetChatHidden(string myName, string otherName, bool hidden)
     {
         myName = User.cleanName(myName);
@@ -138,9 +136,7 @@ public class ChatService
         return "";
     }
 
-    // Searches the text of my messages. Only conversations that I take part in and that are NOT hidden for me are
-    // searched, so nobody can read other people's private chats and hidden chats stay hidden.
-    // The search is not case-sensitive. An empty search text, or a banned user, gives an empty list.
+    
     public List<SearchResult> SearchMessages(string myName, string searchText)
     {
         myName = User.cleanName(myName);
@@ -178,14 +174,14 @@ public class ChatService
         return results;
     }
 
-    // Is this person an existing account that is not banned?
+ 
     private bool IsActiveUser(List<User> users, string username)
     {
         User user = FindUser(users, username);
         return user != null && !user.getIsBanned();
     }
 
-    // The new conversation gets (biggest existing id + 1). The first one gets 1.
+    
     private int NextConversationId(List<Conversation> conversations)
     {
         int biggest = 0;
@@ -199,7 +195,7 @@ public class ChatService
         return biggest + 1;
     }
 
-    // Simple "bubble sort": the chat with the newest message moves to the front.
+   
     private void SortNewestFirst(List<Conversation> list)
     {
         for (int i = 0; i < list.Count - 1; i++)
