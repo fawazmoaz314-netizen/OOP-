@@ -1,7 +1,5 @@
 namespace PrivateChat.Models;
 
-// A small helper entity: one message found by a search, together with the person I chat with.
-// It only holds data. The search rules are in ChatService.
 public class SearchResult
 {
     private string otherUsername;
@@ -13,7 +11,7 @@ public class SearchResult
         this.message = message;
     }
 
-    // The chat partner of the logged-in user (not the logged-in user).
+    
     public string getOtherUsername()
     {
         return otherUsername;

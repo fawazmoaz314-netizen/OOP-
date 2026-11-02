@@ -249,4 +249,28 @@ public class AdminService
         }
         return null;
     }
+    //  now 
+    // Returns all users whose username starts with the given letter(s), sorted by username.
+    // Returns null when the actor is not an active administrator.
+    public List<User> SearchUsersByFirstLetter(string actorName, string letter)
+    {
+        List<User> users = _userRepository.GetAll();
+        if (!IsActiveAdmin(users, actorName))
+        {
+            return null;
+        }
+
+        string start = User.cleanName(letter);          // trim + lowercase: "A" and "a" give the same result
+        List<User> result = new List<User>();
+        for (int i = 0; i < users.Count; i++)
+        {
+            if (users[i].getUsername().StartsWith(start))
+            {
+                result.Add(users[i]);
+            }
+        }
+
+        SortUsers(result, "username");
+        return result;
+    }
 }

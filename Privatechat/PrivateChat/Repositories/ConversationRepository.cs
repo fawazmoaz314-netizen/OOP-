@@ -4,13 +4,13 @@ using PrivateChat.Models;
 
 namespace PrivateChat.Repositories;
 
-// Data Access Layer: reads and writes conversations.txt and messages.txt.
+
 public class ConversationRepository
 {
     private readonly string _conversationsPath = "conversations.txt";
     private readonly string _messagesPath = "messages.txt";
 
-    // Writes ALL conversations and ALL their messages (both files are replaced).
+    
     public void SaveAll(List<Conversation> conversations)
     {
         using (StreamWriter writer = new StreamWriter(_conversationsPath, false))
@@ -28,14 +28,14 @@ public class ConversationRepository
                 for (int i = 0; i < conversation.getMessageCount(); i++)
                 {
                     Message message = conversation.getMessageAt(i);
-                    // Every message line starts with the id of the conversation it belongs to.
+                    
                     writer.WriteLine(conversation.getId() + "|" + message.ToString());
                 }
             }
         }
     }
 
-    // Loads the conversations. The list of users is needed because a Conversation holds User objects.
+    
     public List<Conversation> GetAll(List<User> users)
     {
         List<Conversation> conversations = new List<Conversation>();
@@ -75,7 +75,7 @@ public class ConversationRepository
         return conversations;
     }
 
-    // Reads messages.txt and puts every message into its conversation.
+   
     private void LoadMessages(List<Conversation> conversations)
     {
         if (!File.Exists(_messagesPath))
@@ -90,7 +90,7 @@ public class ConversationRepository
             {
                 continue;
             }
-            // Split into at most 5 parts, so a "|" inside the message text stays in the text.
+            
             string[] parts = line.Split(new char[] { '|' }, 5);
             if (parts.Length != 5)
             {

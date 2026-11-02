@@ -5,14 +5,14 @@ using PrivateChat.Services;
 
 namespace PrivateChat.UI;
 
-// Presentation Layer: menus, questions and printed answers. It contains NO rules and NO file code.
+
 public class ChatUI
 {
     private readonly AuthService _authService;
     private readonly ChatService _chatService;
     private readonly AdminUI _adminUI;
-    private string _currentUsername;   // "" means nobody is logged in
-    private bool _currentIsAdmin;      // only decides which menu lines are shown; the services check the role again
+    private string _currentUsername;   
+    private bool _currentIsAdmin;     
 
     public ChatUI()
     {
@@ -23,7 +23,7 @@ public class ChatUI
         _currentIsAdmin = false;
     }
 
-    // The main loop. Runs until the user chooses Exit.
+
     public void ShowMainMenu()
     {
         SetupFirstAdminUI();
@@ -43,7 +43,7 @@ public class ChatUI
         Console.WriteLine("Goodbye!");
     }
 
-    // Menu for people who are not logged in. Returns false when the user chooses Exit.
+  
     private bool ShowGuestMenu()
     {
         Console.Clear();
@@ -74,7 +74,7 @@ public class ChatUI
         return true;
     }
 
-    // Menu for logged-in users. Returns false when the user chooses Exit.
+    
     private bool ShowUserMenu()
     {
         Console.Clear();
@@ -143,8 +143,7 @@ public class ChatUI
         return true;
     }
 
-    // Runs once at the start. If the program has no administrator yet, the person who starts it creates one.
-    // No password is stored in the source code.
+   
     private void SetupFirstAdminUI()
     {
         if (_authService.AdminExists())
@@ -404,7 +403,7 @@ public class ChatUI
         Pause();
     }
 
-    // Prints one line per chat: the other person, unread count and the last message.
+  
     private void PrintChatList(List<Conversation> conversations)
     {
         if (conversations.Count == 0)
@@ -432,7 +431,7 @@ public class ChatUI
         }
     }
 
-    // Cuts a long text and adds "..." at the end.
+   
     private string Shorten(string text, int maxLength)
     {
         if (text.Length <= maxLength)
@@ -442,7 +441,7 @@ public class ChatUI
         return text.Substring(0, maxLength) + "...";
     }
 
-    // Reads one line from the keyboard. ReadLine gives null if the input is closed, so we return "" then.
+   
     private string ReadText()
     {
         string input = Console.ReadLine();
@@ -453,7 +452,7 @@ public class ChatUI
         return input;
     }
 
-    // Waits so the user can read the result before the screen is cleared.
+  
     private void Pause()
     {
         Console.WriteLine("Press Enter to continue...");

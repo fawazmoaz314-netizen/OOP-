@@ -1,11 +1,11 @@
+using PrivateChat.Models;
+using PrivateChat.Repositories;
+using PrivateChat.Services;
 using System;
 using System.Collections.Generic;
-using PrivateChat.Models;
-using PrivateChat.Services;
 
 namespace PrivateChat.UI;
 
-// Presentation Layer: the Admin Panel screens. It contains NO rules: AdminService decides who may do what.
 public class AdminUI
 {
     private readonly AdminService _adminService;
@@ -15,7 +15,7 @@ public class AdminUI
         _adminService = new AdminService();
     }
 
-    // The Admin Panel menu. Runs until the admin chooses Back.
+    
     public void ShowAdminMenu(string adminName)
     {
         bool keepRunning = true;
@@ -218,7 +218,7 @@ public class AdminUI
         Pause();
     }
 
-    // Reads one line from the keyboard. ReadLine gives null if the input is closed, so we return "" then.
+   
     private string ReadText()
     {
         string input = Console.ReadLine();
@@ -229,7 +229,7 @@ public class AdminUI
         return input;
     }
 
-    // Waits so the admin can read the result before the screen is cleared.
+    
     private void Pause()
     {
         Console.WriteLine("Press Enter to continue...");

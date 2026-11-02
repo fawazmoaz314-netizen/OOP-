@@ -3,14 +3,14 @@ using PrivateChat.Common;
 
 namespace PrivateChat.Models;
 
-// Entity: a person who has an account in PrivateChat (a normal user or an admin).
+
 public class User
 {
-    // Static attributes: the only two valid roles. One shared copy for the whole class.
+   
     public static readonly string roleUser = "User";
     public static readonly string roleAdmin = "Admin";
 
-    // Data (attributes). They are private, so only this class can change them directly.
+   
     private string username;
     private string passwordHash;
     private string displayName;
@@ -18,7 +18,7 @@ public class User
     private bool isBanned;
     private long registeredTicks;
 
-    // Default constructor: creates a normal, active user with empty text. The setters fill it in later.
+    
     public User()
     {
         username = "";
@@ -29,7 +29,7 @@ public class User
         registeredTicks = DateTime.Now.Ticks;
     }
 
-    // Parameterized constructor: used when we load an already saved user from the file.
+   
     public User(string username, string passwordHash, string displayName, string role, bool isBanned, long registeredTicks)
     {
         this.username = username;
@@ -40,7 +40,7 @@ public class User
         this.registeredTicks = registeredTicks;
     }
 
-    // Static method: needs no User object. Makes a username tidy: "  Ali_01 " becomes "ali_01".
+   
     public static string cleanName(string name)
     {
         if (name == null)
@@ -50,14 +50,13 @@ public class User
         return name.Trim().ToLower();
     }
 
-    // Getter
+   
     public string getUsername()
     {
         return username;
     }
 
-    // Setter with validation: 3 to 20 characters, only letters, digits and underscore.
-    // Returns true when the username was accepted, false when it was rejected.
+   
     public bool setUsername(string username)
     {
         string cleaned = cleanName(username);
@@ -78,14 +77,13 @@ public class User
         return true;
     }
 
-    // Getter for the saved (scrambled) password. The real password is never stored.
+    
     public string getPasswordHash()
     {
         return passwordHash;
     }
 
-    // Setter with validation: the password must have at least 6 characters.
-    // We store only the hash of it.
+    
     public bool setPassword(string plainPassword)
     {
         if (plainPassword == null || plainPassword.Length < 6)
@@ -96,7 +94,7 @@ public class User
         return true;
     }
 
-    // Behaviour: is this the right password for this user?
+    
     public bool checkPassword(string plainPassword)
     {
         if (plainPassword == null)
@@ -106,7 +104,7 @@ public class User
         return passwordHash == PasswordHelper.Hash(plainPassword);
     }
 
-    // Getter. If no display name was saved, the username is shown instead.
+  
     public string getDisplayName()
     {
         if (displayName == "")
@@ -116,7 +114,7 @@ public class User
         return displayName;
     }
 
-    // Setter with validation: 1 to 30 characters and no "|" (that character separates the fields in the file).
+   
     public bool setDisplayName(string displayName)
     {
         if (displayName == null)
@@ -141,7 +139,7 @@ public class User
         return role;
     }
 
-    // Setter with validation: only "User" or "Admin" is allowed.
+   
     public bool setRole(string role)
     {
         if (role != roleUser && role != roleAdmin)
@@ -152,7 +150,7 @@ public class User
         return true;
     }
 
-    // Behaviour: is this user an administrator?
+ 
     public bool isAdmin()
     {
         return role == roleAdmin;
@@ -163,7 +161,7 @@ public class User
         return isBanned;
     }
 
-    // Behaviours: an admin bans or unbans an account. A banned user cannot log in or chat.
+    
     public void ban()
     {
         isBanned = true;
@@ -184,8 +182,6 @@ public class User
         return new DateTime(registeredTicks);
     }
 
-    // One line of text for the file: username|passwordHash|displayName|role|isBanned|registeredTicks
-    // The saved display name is used here (not the username fallback), so a missing name stays missing.
     public override string ToString()
     {
         return username + "|" + passwordHash + "|" + displayName + "|" + role + "|" + isBanned + "|" + registeredTicks;
