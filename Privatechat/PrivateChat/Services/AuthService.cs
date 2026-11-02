@@ -4,11 +4,11 @@ using PrivateChat.Repositories;
 
 namespace PrivateChat.Services;
 
-
+// Business Logic Layer: the rules for accounts (register, login, change password, first admin).
 public class AuthService
 {
     private readonly UserRepository _userRepository;
-    private string _lastError;   
+    private string _lastError;   // the reason the last Login failed
 
     public AuthService()
     {
@@ -16,19 +16,21 @@ public class AuthService
         _lastError = "";
     }
 
-  
+    // The reason the last Login call failed (empty when it worked).
     public string getLastError()
     {
         return _lastError;
     }
 
-
+    // Self-registration. The new account is ALWAYS a normal user: the caller cannot choose the role.
+    // Returns "" when everything is fine, otherwise the reason it failed.
     public string Register(string username, string password, string confirmPassword)
     {
         return CreateAccount(username, password, confirmPassword, User.roleUser);
     }
 
-    
+    // Creates the very first administrator. It only works while there is no admin yet.
+    // Returns "" when fine, otherwise the reason it failed.
     public string CreateFirstAdmin(string username, string password, string confirmPassword)
     {
         if (AdminExists())
@@ -38,7 +40,7 @@ public class AuthService
         return CreateAccount(username, password, confirmPassword, User.roleAdmin);
     }
 
-  
+    // Is there at least one administrator in the file?
     public bool AdminExists()
     {
         List<User> users = _userRepository.GetAll();
@@ -52,7 +54,8 @@ public class AuthService
         return false;
     }
 
-
+    // Returns the User when the username and password are right and the account is not banned, otherwise null.
+    // When null is returned, getLastError() tells the reason.
     public User Login(string username, string password)
     {
         _lastError = "";
@@ -65,21 +68,21 @@ public class AuthService
         }
         if (user.getIsBanned())
         {
-           
+            // Only shown after the password was right, so strangers cannot probe which accounts exist.
             _lastError = "This account is banned. Please contact an administrator.";
             return null;
         }
         return user;
     }
 
-   
+    // Does an account with this username exist?
     public bool UserExists(string username)
     {
         List<User> users = _userRepository.GetAll();
         return FindUserByName(users, User.cleanName(username)) != null;
     }
 
-    
+    // Changes the password. Returns "" when fine, otherwise the reason it failed.
     public string ChangePassword(string username, string oldPassword, string newPassword, string confirmPassword)
     {
         List<User> users = _userRepository.GetAll();
@@ -109,7 +112,7 @@ public class AuthService
         return "";
     }
 
-  
+    // Shared by Register and CreateFirstAdmin. Returns "" when fine, otherwise the reason.
     private string CreateAccount(string username, string password, string confirmPassword, string role)
     {
         User user = new User();
