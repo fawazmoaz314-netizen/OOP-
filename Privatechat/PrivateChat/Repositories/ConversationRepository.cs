@@ -35,7 +35,7 @@ public class ConversationRepository
         }
     }
 
-    
+   
     public List<Conversation> GetAll(List<User> users)
     {
         List<Conversation> conversations = new List<Conversation>();
@@ -75,7 +75,7 @@ public class ConversationRepository
         return conversations;
     }
 
-   
+    
     private void LoadMessages(List<Conversation> conversations)
     {
         if (!File.Exists(_messagesPath))
@@ -90,7 +90,7 @@ public class ConversationRepository
             {
                 continue;
             }
-            
+           
             string[] parts = line.Split(new char[] { '|' }, 5);
             if (parts.Length != 5)
             {

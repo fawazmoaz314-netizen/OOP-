@@ -4,9 +4,7 @@ using PrivateChat.Repositories;
 
 namespace PrivateChat.Services;
 
-// Business Logic Layer: the rules for the Admin Panel.
-// EVERY public method first checks that the person who asks (actorName) is an active administrator.
-// So even if the UI showed an admin screen by mistake, a normal user could still do nothing here.
+
 public class AdminService
 {
     private readonly UserRepository _userRepository;
@@ -18,10 +16,7 @@ public class AdminService
         _conversationRepository = new ConversationRepository();
     }
 
-    // Returns the users that match the search text, in the chosen order.
-    // searchText: empty = all users; otherwise it is looked for in username, display name and role (not case-sensitive).
-    // sortBy: "username", "name" or "date" (anything else gives the default: username).
-    // Returns null when the actor is not an active administrator.
+
     public List<User> SearchUsers(string actorName, string searchText, string sortBy)
     {
         List<User> users = _userRepository.GetAll();
@@ -54,9 +49,48 @@ public class AdminService
         return result;
     }
 
-    // Creates an account (normal user or admin). Returns "" when fine, otherwise the reason it failed.
+    public List<User> SearchUsersByLetters(string actorName, string letters, string mode)
+    {
+        List<User> users = _userRepository.GetAll();
+        if (!IsActiveAdmin(users, actorName))
+        {
+            return null;
+        }
+
+        string text = User.cleanName(letters);
+        List<User> result = new List<User>();
+        for (int i = 0; i < users.Count; i++)
+        {
+            string name = users[i].getUsername();
+            bool matches = false;
+            if (mode == "start")
+            {
+                matches = name.StartsWith(text);
+            }
+            else if (mode == "end")
+            {
+                matches = name.EndsWith(text);
+            }
+            else
+            {
+                matches = name.Contains(text);
+            }
+
+            if (matches)
+            {
+                result.Add(users[i]);
+            }
+        }
+
+        SortUsers(result, "username");
+        return result;
+    }
+
+
     public string CreateUser(string actorName, string username, string displayName, string password, string role)
     {
+
+
         List<User> users = _userRepository.GetAll();
         if (!IsActiveAdmin(users, actorName))
         {
@@ -92,9 +126,7 @@ public class AdminService
         return "";
     }
 
-    // Deletes an account AND every conversation (with all its messages) that this person took part in.
-    // The other person loses those chats too. An admin cannot delete his or her own account.
-    // Returns "" when fine, otherwise the reason it failed.
+
     public string DeleteUser(string actorName, string targetName)
     {
         List<User> users = _userRepository.GetAll();
@@ -114,7 +146,7 @@ public class AdminService
             return "User '" + targetName + "' was not found.";
         }
 
-        // Keep only the conversations that do NOT involve the deleted user.
+
         List<Conversation> all = _conversationRepository.GetAll(users);
         List<Conversation> kept = new List<Conversation>();
         for (int i = 0; i < all.Count; i++)
@@ -131,14 +163,13 @@ public class AdminService
         return "";
     }
 
-    // Bans an account. A banned user cannot log in or chat. An admin cannot ban himself or herself.
-    // Returns "" when fine, otherwise the reason it failed.
+
     public string BanUser(string actorName, string targetName)
     {
         return ChangeBan(actorName, targetName, true);
     }
 
-    // Removes a ban. Returns "" when fine, otherwise the reason it failed.
+
     public string UnbanUser(string actorName, string targetName)
     {
         return ChangeBan(actorName, targetName, false);
@@ -183,7 +214,7 @@ public class AdminService
         return "";
     }
 
-    // The authorization check used by every method above: the actor must exist, be an admin and not be banned.
+
     private bool IsActiveAdmin(List<User> users, string actorName)
     {
         User actor = FindUser(users, User.cleanName(actorName));
@@ -194,8 +225,7 @@ public class AdminService
         return actor.isAdmin() && !actor.getIsBanned();
     }
 
-    // Simple bubble sort. "name" sorts by display name, "date" by registration time (oldest first),
-    // and everything else (the default) by username. Equal values keep a stable order by username.
+
     private void SortUsers(List<User> list, string sortBy)
     {
         for (int i = 0; i < list.Count - 1; i++)
@@ -212,7 +242,7 @@ public class AdminService
         }
     }
 
-    // Returns a negative number if a comes first, a positive number if b comes first, 0 if equal.
+
     private int CompareUsers(User a, User b, string sortBy)
     {
         int result = 0;
@@ -249,28 +279,23 @@ public class AdminService
         }
         return null;
     }
-    //  now 
-    // Returns all users whose username starts with the given letter(s), sorted by username.
-    // Returns null when the actor is not an active administrator.
-    public List<User> SearchUsersByFirstLetter(string actorName, string letter)
+
+    public int CountBannedUsers(string actorName)
     {
         List<User> users = _userRepository.GetAll();
         if (!IsActiveAdmin(users, actorName))
         {
-            return null;
+            return -1;
         }
 
-        string start = User.cleanName(letter);          // trim + lowercase: "A" and "a" give the same result
-        List<User> result = new List<User>();
+        int count = 0;
         for (int i = 0; i < users.Count; i++)
         {
-            if (users[i].getUsername().StartsWith(start))
+            if (users[i].getIsBanned())
             {
-                result.Add(users[i]);
+                count++;
             }
         }
-
-        SortUsers(result, "username");
-        return result;
+        return count;
     }
 }

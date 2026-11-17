@@ -4,11 +4,11 @@ using PrivateChat.Repositories;
 
 namespace PrivateChat.Services;
 
-// Business Logic Layer: the rules for accounts (register, login, change password, first admin).
+
 public class AuthService
 {
     private readonly UserRepository _userRepository;
-    private string _lastError;   // the reason the last Login failed
+    private string _lastError;   
 
     public AuthService()
     {
@@ -16,14 +16,13 @@ public class AuthService
         _lastError = "";
     }
 
-    // The reason the last Login call failed (empty when it worked).
+    
     public string getLastError()
     {
         return _lastError;
     }
 
-    // Self-registration. The new account is ALWAYS a normal user: the caller cannot choose the role.
-    // Returns "" when everything is fine, otherwise the reason it failed.
+    
     public string Register(string username, string password, string confirmPassword)
     {
         return CreateAccount(username, password, confirmPassword, User.roleUser);

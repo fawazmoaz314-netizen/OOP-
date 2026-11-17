@@ -1,0 +1,279 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\OOP\\Privatechat\\PrivateChat\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\common\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:common\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\common\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:common\\passwordhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\ui\\adminui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:ui\\adminui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\ui\\chatui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:ui\\chatui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\models\\searchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:models\\searchresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:models\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\models\\conversation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:models\\conversation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\repositories\\conversationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:repositories\\conversationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:services\\chatservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|d:\\oop\\privatechat\\privatechat\\privatechat.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{7C3079E5-D28E-5184-9EA7-D746CD19EECB}|PrivateChat.csproj|solutionrelative:privatechat.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Database.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Common\\Database.cs",
+              "RelativeDocumentMoniker": "Common\\Database.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Common\\Database.cs",
+              "RelativeToolTip": "Common\\Database.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAmwAcAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-17T10:52:33.757Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AdminUI.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\UI\\AdminUI.cs",
+              "RelativeDocumentMoniker": "UI\\AdminUI.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\UI\\AdminUI.cs",
+              "RelativeToolTip": "UI\\AdminUI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkBAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-22T16:02:58.151Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Models\\User.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Models\\User.cs",
+              "RelativeToolTip": "Models\\User.cs",
+              "ViewState": "AgIAAJEAAAAAAAAAAAAIwKAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T11:33:38.347Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Repositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\UserRepository.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Repositories\\UserRepository.cs",
+              "RelativeToolTip": "Repositories\\UserRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-31T20:12:43.45Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SearchResult.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Models\\SearchResult.cs",
+              "RelativeDocumentMoniker": "Models\\SearchResult.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Models\\SearchResult.cs",
+              "RelativeToolTip": "Models\\SearchResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T11:33:23.809Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Message.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Models\\Message.cs",
+              "RelativeDocumentMoniker": "Models\\Message.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Models\\Message.cs",
+              "RelativeToolTip": "Models\\Message.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFQAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T11:32:48.311Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PasswordHelper.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Common\\PasswordHelper.cs",
+              "RelativeDocumentMoniker": "Common\\PasswordHelper.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Common\\PasswordHelper.cs",
+              "RelativeToolTip": "Common\\PasswordHelper.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAqwAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-31T11:36:00.296Z",
+              "EditorCaption": "",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Conversation.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Models\\Conversation.cs",
+              "RelativeDocumentMoniker": "Models\\Conversation.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Models\\Conversation.cs",
+              "RelativeToolTip": "Models\\Conversation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-22T17:51:54.957Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AdminService.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Services\\AdminService.cs",
+              "RelativeDocumentMoniker": "Services\\AdminService.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Services\\AdminService.cs",
+              "RelativeToolTip": "Services\\AdminService.cs",
+              "ViewState": "AgIAABYBAAAAFHRcs8zovyUBAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T10:41:17.381Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ChatUI.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\UI\\ChatUI.cs",
+              "RelativeDocumentMoniker": "UI\\ChatUI.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\UI\\ChatUI.cs",
+              "RelativeToolTip": "UI\\ChatUI.cs",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAmwJAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-31T11:35:52.901Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-31T11:34:08.557Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ConversationRepository.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Repositories\\ConversationRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ConversationRepository.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Repositories\\ConversationRepository.cs",
+              "RelativeToolTip": "Repositories\\ConversationRepository.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAmwFwAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-01T08:58:31.399Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ChatService.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Services\\ChatService.cs",
+              "RelativeDocumentMoniker": "Services\\ChatService.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Services\\ChatService.cs",
+              "RelativeToolTip": "Services\\ChatService.cs",
+              "ViewState": "AgIAALkAAAAAAAAAAAAUwMUAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T11:35:52.955Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Services\\AuthService.cs",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\Services\\AuthService.cs",
+              "RelativeToolTip": "Services\\AuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-11-02T11:21:41.974Z",
+              "OwnerCaption": "%2"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PrivateChat.csproj",
+              "DocumentMoniker": "D:\\OOP\\Privatechat\\PrivateChat\\PrivateChat.csproj",
+              "RelativeDocumentMoniker": "PrivateChat.csproj",
+              "ToolTip": "D:\\OOP\\Privatechat\\PrivateChat\\PrivateChat.csproj",
+              "RelativeToolTip": "PrivateChat.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-10-22T16:48:30.244Z",
+              "OwnerCaption": "PrivateChat.csproj"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

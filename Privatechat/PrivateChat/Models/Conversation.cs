@@ -9,10 +9,10 @@ public class Conversation
     private User firstUser;
     private User secondUser;
     private bool hiddenForFirstUser;   
-    private bool hiddenForSecondUser;  
+    private bool hiddenForSecondUser;   
     private List<Message> messages;
 
-    
+   
     public Conversation(int id, User firstUser, User secondUser)
     {
         this.id = id;
@@ -38,7 +38,7 @@ public class Conversation
         return secondUser;
     }
 
- 
+  
     public bool hasParticipant(string username)
     {
         return firstUser.getUsername() == username || secondUser.getUsername() == username;
@@ -52,7 +52,7 @@ public class Conversation
         return (first == nameA && second == nameB) || (first == nameB && second == nameA);
     }
 
-    
+  
     public User getOtherUser(string username)
     {
         if (firstUser.getUsername() == username)
@@ -66,7 +66,7 @@ public class Conversation
         return null;
     }
 
-
+   
     public bool addMessage(Message message)
     {
         if (message == null)
@@ -80,10 +80,8 @@ public class Conversation
         messages.Add(message);
         return true;
     }
- 
-  
 
-   
+    // The list itself stays private. Others read it through these two methods.
     public int getMessageCount()
     {
         return messages.Count;
@@ -107,7 +105,7 @@ public class Conversation
         return messages[messages.Count - 1];
     }
 
-   
+    // How many messages did the OTHER person send to this user that are still unread?
     public int countUnreadFor(string username)
     {
         int count = 0;
@@ -122,7 +120,7 @@ public class Conversation
         return count;
     }
 
-   
+    // This user has opened the chat, so everything the other person sent is now read.
     public void markAllReadFor(string username)
     {
         for (int i = 0; i < messages.Count; i++)
@@ -148,7 +146,7 @@ public class Conversation
         return false;
     }
 
-   
+    // Setter: hide or show the chat for ONE user. The other user's list is not affected.
     public bool setHiddenFor(string username, bool hidden)
     {
         if (firstUser.getUsername() == username)
@@ -164,7 +162,7 @@ public class Conversation
         return false;
     }
 
-    
+    // One line of text for conversations.txt: id|firstUsername|secondUsername|hiddenFirst|hiddenSecond
     public override string ToString()
     {
         return id + "|" + firstUser.getUsername() + "|" + secondUser.getUsername() + "|" + hiddenForFirstUser + "|" + hiddenForSecondUser;

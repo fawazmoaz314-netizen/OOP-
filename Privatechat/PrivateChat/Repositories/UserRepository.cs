@@ -1,65 +1,84 @@
-using System;
 using System.Collections.Generic;
-using System.IO;
+using Microsoft.Data.SqlClient;
+using PrivateChat.Common;
 using PrivateChat.Models;
 
 namespace PrivateChat.Repositories;
 
-// Data Access Layer: the only class that reads and writes users.txt.
 public class UserRepository
 {
-    private readonly string _filePath = "users.txt";
-
-    // Adds ONE user at the end of the file.
     public void Save(User user)
     {
-        using (StreamWriter writer = new StreamWriter(_filePath, true))
+        using (SqlConnection con = Database.CreateConnection())
         {
-            writer.WriteLine(user.ToString());
-        }
-    }
-
-    // Replaces the whole file with this list (used after a change such as a new password, ban or delete).
-    public void SaveAll(List<User> users)
-    {
-        using (StreamWriter writer = new StreamWriter(_filePath, false))
-        {
-            foreach (User user in users)
+            con.Open();
+            string sql = "INSERT INTO Users (Username, PasswordHash, DisplayName, Role, IsBanned, RegisteredTicks) " +
+                         "VALUES (@u, @p, @d, @r, @b, @t)";
+            using (SqlCommand cmd = new SqlCommand(sql, con))
             {
-                writer.WriteLine(user.ToString());
+                cmd.Parameters.AddWithValue("@u", user.getUsername());
+                cmd.Parameters.AddWithValue("@p", user.getPasswordHash());
+                cmd.Parameters.AddWithValue("@d", user.getDisplayName());
+                cmd.Parameters.AddWithValue("@r", user.getRole());
+                cmd.Parameters.AddWithValue("@b", user.getIsBanned());
+                cmd.Parameters.AddWithValue("@t", user.getRegisteredTicks());
+                cmd.ExecuteNonQuery();
             }
         }
     }
 
-    // Reads the file and rebuilds the User objects. An empty list is returned if there is no file yet.
     public List<User> GetAll()
     {
         List<User> users = new List<User>();
-        if (!File.Exists(_filePath))
+        using (SqlConnection con = Database.CreateConnection())
         {
-            return users;
-        }
-
-        string[] lines = File.ReadAllLines(_filePath);
-        foreach (string line in lines)
-        {
-            if (line.Trim().Length == 0)
+            con.Open();
+            string sql = "SELECT Username, PasswordHash, DisplayName, Role, IsBanned, RegisteredTicks FROM Users";
+            using (SqlCommand cmd = new SqlCommand(sql, con))
+            using (SqlDataReader reader = cmd.ExecuteReader())
             {
-                continue;
+                while (reader.Read())
+                {
+                    User user = new User(
+                        reader.GetString(0),
+                        reader.GetString(1),
+                        reader.GetString(2),
+                        reader.GetString(3),
+                        reader.GetBoolean(4),
+                        reader.GetInt64(5));
+                    users.Add(user);
+                }
             }
-            string[] parts = line.Split('|');
-            if (parts.Length == 2)
-            {
-                // Old file format (before roles existed): username|passwordHash. Treat it as a normal, active user.
-                users.Add(new User(parts[0], parts[1], "", User.roleUser, false, DateTime.Now.Ticks));
-            }
-            else if (parts.Length == 6)
-            {
-                // New format: username|passwordHash|displayName|role|isBanned|registeredTicks
-                users.Add(new User(parts[0], parts[1], parts[2], parts[3], bool.Parse(parts[4]), long.Parse(parts[5])));
-            }
-            // Any other line is damaged and is ignored.
         }
         return users;
+    }
+
+    // Keeps the old name so AuthService/AdminService need no change.
+    // Rewrites every user in one transaction.
+    public void SaveAll(List<User> users)
+    {
+        using (SqlConnection con = Database.CreateConnection())
+        {
+            con.Open();
+            using (SqlTransaction tx = con.BeginTransaction())
+            {
+                // Conversations point at Users, so a plain DELETE would fail if chats exist.
+                // See the note below: for SaveAll prefer UPDATE per user.
+                foreach (User user in users)
+                {
+                    string sql = "UPDATE Users SET PasswordHash=@p, DisplayName=@d, Role=@r, IsBanned=@b WHERE Username=@u";
+                    using (SqlCommand cmd = new SqlCommand(sql, con, tx))
+                    {
+                        cmd.Parameters.AddWithValue("@p", user.getPasswordHash());
+                        cmd.Parameters.AddWithValue("@d", user.getDisplayName());
+                        cmd.Parameters.AddWithValue("@r", user.getRole());
+                        cmd.Parameters.AddWithValue("@b", user.getIsBanned());
+                        cmd.Parameters.AddWithValue("@u", user.getUsername());
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                tx.Commit();
+            }
+        }
     }
 }

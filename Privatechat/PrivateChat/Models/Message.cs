@@ -5,6 +5,7 @@ namespace PrivateChat.Models;
 
 public class Message
 {
+   
     public static readonly int maxLength = 500;
 
     private string sender;
@@ -12,7 +13,7 @@ public class Message
     private long sentTicks;  
     private bool isRead;
 
-   
+    
     public Message()
     {
         sender = "";
@@ -21,7 +22,7 @@ public class Message
         isRead = false;
     }
 
-  
+   
     public Message(string sender, string text, long sentTicks, bool isRead)
     {
         this.sender = sender;
@@ -50,7 +51,7 @@ public class Message
         return text;
     }
 
-    
+   
     public bool setText(string text)
     {
         if (text == null)
@@ -81,12 +82,13 @@ public class Message
         return isRead;
     }
 
-    
+   
     public void markAsRead()
     {
         isRead = true;
     }
 
+   
     public override string ToString()
     {
         return sender + "|" + sentTicks + "|" + isRead + "|" + text;

@@ -15,7 +15,7 @@ public class AdminUI
         _adminService = new AdminService();
     }
 
-    
+
     public void ShowAdminMenu(string adminName)
     {
         bool keepRunning = true;
@@ -28,7 +28,9 @@ public class AdminUI
             Console.WriteLine("3. Delete a user");
             Console.WriteLine("4. Ban a user");
             Console.WriteLine("5. Unban a user");
-            Console.WriteLine("6. Back");
+            Console.WriteLine("6. Search users by letters");
+            Console.WriteLine("7. Number of user Banned");
+            Console.WriteLine("8. Back");
             Console.Write("Select option: ");
             string choice = ReadText();
 
@@ -53,6 +55,14 @@ public class AdminUI
                 BanUI(adminName, false);
             }
             else if (choice == "6")
+            {
+                SearchByLettersUI(adminName);
+            }
+            else if (choice == "7")
+            {
+                CountbannedUser(adminName);
+            }
+            else if (choice == "8")
             {
                 keepRunning = false;
             }
@@ -105,6 +115,62 @@ public class AdminUI
                 }
                 Console.WriteLine("- " + user.getUsername() + " | " + user.getDisplayName() + " | " + user.getRole()
                     + " | " + status + " | registered " + user.getRegisteredTime().ToString("dd MMM yyyy"));
+            }
+        }
+        Pause();
+    }
+
+    private void SearchByLettersUI(string adminName)
+    {
+        Console.Clear();
+        Console.WriteLine("=== Search users by letters ===");
+        Console.Write("Enter the letter(s): ");
+        string letters = ReadText();
+        if (letters.Trim().Length == 0)
+        {
+            Console.WriteLine("Please type at least one letter.");
+            Pause();
+            return;
+        }
+
+        Console.WriteLine("Where should the letters be?");
+        Console.WriteLine("1. At the start of the name");
+        Console.WriteLine("2. At the end of the name");
+        Console.WriteLine("3. Anywhere in the name");
+        Console.Write("Select option: ");
+        string choice = ReadText();
+
+        string mode = "anywhere";
+        if (choice == "1")
+        {
+            mode = "start";
+        }
+        else if (choice == "2")
+        {
+            mode = "end";
+        }
+        else if (choice != "3")
+        {
+            Console.WriteLine("Invalid option!");
+            Pause();
+            return;
+        }
+
+        List<User> users = _adminService.SearchUsersByLetters(adminName, letters, mode);
+        if (users == null)
+        {
+            Console.WriteLine("Access denied: only an administrator can see this list.");
+        }
+        else if (users.Count == 0)
+        {
+            Console.WriteLine("No user found for '" + letters.Trim() + "'.");
+        }
+        else
+        {
+            Console.WriteLine(users.Count + " user(s) found:");
+            foreach (User user in users)
+            {
+                Console.WriteLine("- " + user.getUsername() + " | " + user.getDisplayName() + " | " + user.getRole());
             }
         }
         Pause();
@@ -175,7 +241,6 @@ public class AdminUI
         Pause();
     }
 
-    // ban = true bans the user, ban = false removes the ban.
     private void BanUI(string adminName, bool ban)
     {
         Console.Clear();
@@ -218,7 +283,7 @@ public class AdminUI
         Pause();
     }
 
-   
+
     private string ReadText()
     {
         string input = Console.ReadLine();
@@ -228,11 +293,32 @@ public class AdminUI
         }
         return input;
     }
+    private void CountbannedUser(string adminName)
+    {
+        int n = _adminService.CountBannedUsers(adminName);
+        if (n == -1)
+        {
+            Console.WriteLine("Access denied.");
+        }
+        else
+        {
+            Console.WriteLine("Banned users: " + n);
+        }
+        
+        Pause();
+    }
 
-    
+
     private void Pause()
     {
         Console.WriteLine("Press Enter to continue...");
         Console.ReadLine();
     }
+
+
+
+   
+    
+      
+    
 }

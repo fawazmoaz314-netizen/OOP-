@@ -1,5 +1,6 @@
 namespace PrivateChat.Models;
 
+
 public class SearchResult
 {
     private string otherUsername;
@@ -11,7 +12,7 @@ public class SearchResult
         this.message = message;
     }
 
-    
+   
     public string getOtherUsername()
     {
         return otherUsername;
